@@ -60,7 +60,7 @@
     justify-content: space-between;
     text-align: center;
     align-items: center;
-    padding: 30px;
+    padding-top: 30px;
     
    
 }
@@ -68,6 +68,7 @@
     height: 100vh; /* Optional: Adjust this to match your layout */
 }
 .logo{
+    margin-left: 30px;
     width: 250px;
 
 }
@@ -91,7 +92,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Optional: Adjust this to match your layout */
+    height: 75vh; /* Optional: Adjust this to match your layout */
     text-align: center; /* Center the text within the div */
 }
 
@@ -136,7 +137,7 @@
     font-size: 19px;
     line-height: 35px;
     text-align: center;
-    margin: 10px auto;
+    margin: 35px auto;
 }
 /* responsive */
 
@@ -177,9 +178,9 @@
     flex-direction: column;
 }
  .home_h1{
-    text-align: left;
+    text-align: center;
     width: 90%;
-    font-size: 32px;
+    font-size: 28px;
     padding: 20px;
 }
 .home_p{
@@ -187,7 +188,10 @@
     font-size: 16px;
     width: 90%;
     text-align:justify;
-    padding: 30px;
+    padding: 10px 20px;
+}
+.logo{
+    margin-left: 0px;
 }
 }
 
