@@ -92,7 +92,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 75vh; /* Optional: Adjust this to match your layout */
+     /* Optional: Adjust this to match your layout */
     text-align: center; /* Center the text within the div */
 }
 
