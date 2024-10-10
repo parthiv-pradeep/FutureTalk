@@ -3,7 +3,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    overflow: hidden;
+    
 }
 .video_container {
     position: absolute;
@@ -209,15 +209,17 @@
 .nav_container{
     display: flex;
     flex-direction: column;
+    margin: 0px auto;
+   
 }
  .home_h1{
     text-align: center;
-    width: 100%;
+    width: 98%;
     font-size: 24px;
     padding: 10px;
 }
 .home_p{
-     line-height: 30px; 
+    line-height: 30px; 
     font-size: 14px;
     width: 90%;
     text-align:justify;
@@ -233,6 +235,98 @@
 }
 }
 
+
+/* Feature - second page */
+
+.features{
+     /* height: 40vh;  */
+    width:100vw;
+    position: relative;
+}   
+.feature_container{
+    /* vertical-align: top;
+    position: absolute; */
+    /* top: -50px;
+    left: 10%; */
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    border-radius: 10px;
+    width: 80%;
+    /* margin: 2px auto; */
+    background-color:#ffffff;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto adjust columns */
+    gap: 20px; /* Space between cards */
+    grid-auto-rows: 1fr;
+    padding: 10px;
+    
    
+
+}
+.feature_box{
+
+    border: 1px solid rgba(255, 255, 255, 0.342);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: justify;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: box-shadow 0.3s ease; /* Adds smooth transition on hover */
+    
+
+}
+.feature_box i{
+    margin: 10px;
+    font-size: 30px;
+    color:#303639;
+}
+.feature_box h4 {
+    font-size: 22px;
+    color:#157899;
+}
+.feature_box h6{
+    font-size: 18px;
+    color:#070707;
+   
+}
+.feature_box p{
+    font-size: 15px;
+    color:#000000;;
+}
+
+@media (max-width: 480px){
+    .feature_box{
+        margin: 5px auto;
+        width: 90%;
+    }
+    .feature_box p{
+        font-size: 13px;
+    }
+    .feature_box h6{
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+.applynow_card{
+    background-image: linear-gradient(to bottom, #4b758b, #3b6071);
+    height: 30vh;
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+
+}
+
+.applyimg_holder img{
+    height:30vh;
+
+}
+
+
+
+
 
 
