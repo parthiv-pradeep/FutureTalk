@@ -89,6 +89,7 @@
 }
 
 .home_content {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,10 +241,11 @@
 
 .features{
      /* height: 40vh;  */
-    width:100vw;
+    /* width:100vw; */
     position: relative;
 }   
 .feature_container{
+    overflow: hidden;
     /* vertical-align: top;
     position: absolute; */
     /* top: -50px;
@@ -311,19 +313,60 @@
     }
 }
 
-.applynow_card{
-    background-image: linear-gradient(to bottom, #4b758b, #3b6071);
-    height: 30vh;
-    width: 80%;
-    margin: 10px auto;
+
+.banner {
+    overflow: hidden;
+    background-color:#93abfe;
+    background-image: url(images/Tiny\ Paper\ airplane.gif);
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 40vh;
+    width:100vw;
+    margin: 0 auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    gap: 30px;
+  }
+  .banner h1{
+    font-size: 40px;
+  }
+  .banner p{
+    font-size: 20px;
+  }
+  .content button{
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(20, 19, 19);
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 40px;
+    background: transparent;
+  }
+  @media (max-width: 480px){
+    .banner h1{
+        font-size: 28px;
+    }
+    .banner p{
+        font-size: 14px;
+      }
+    .content button{
+        font-size: 14px;
+    }
+  }
+  
+  
+  
+  
+  
+  
 
-}
 
-.applyimg_holder img{
-    height:30vh;
-
-}
 
 
 
