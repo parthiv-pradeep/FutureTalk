@@ -139,7 +139,7 @@
     
     color: white;
     width: 60%;
-    font-size: 19px;
+    font-size: 16px;
     line-height: 35px;
     text-align: center;
     margin: 35px auto;
@@ -191,7 +191,7 @@
     }
     .home_p{
         width: 90%;
-        text-align:justify;
+        text-align:left;
         padding: 30px;
 
     }
@@ -224,9 +224,9 @@
 }
 .home_p{
     line-height: 30px; 
-    font-size: 14px;
+    font-size: 12px;
     width: 90%;
-    text-align:justify;
+    text-align:left;
     padding: 10px 20px;
     margin: 15px auto;
 }
