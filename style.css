@@ -203,8 +203,8 @@
 .nav_links a{
     text-decoration: none;
     font-size: 14px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
   
 }
 .nav_container{
@@ -267,13 +267,14 @@
 
 }
 .feature_box{
-
+    margin: 30px;
+    background:linear-gradient(180deg,#d8c1da 0%,#e1ffea22 60%);
     border: 1px solid rgba(255, 255, 255, 0.342);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    text-align: justify;
+    text-align: left;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
     transition: box-shadow 0.3s ease; /* Adds smooth transition on hover */
@@ -281,20 +282,24 @@
 
 }
 .feature_box i{
+    text-align: center;
     margin: 10px;
     font-size: 30px;
     color:#303639;
 }
 .feature_box h4 {
+    text-align: center;
     font-size: 22px;
     color:#157899;
 }
 .feature_box h6{
+    text-align: center;
     font-size: 18px;
     color:#070707;
    
 }
 .feature_box p{
+    padding: 5px;
     font-size: 15px;
     color:#000000;;
 }
@@ -317,20 +322,21 @@
 .banner {
     overflow: hidden;
     background-color:#93abfe;
-    background-image: url(images/Tiny\ Paper\ airplane.gif);
-    background-position: right;
-    background-size: contain;
+    background-image: linear-gradient(180deg,#0e0c0e 0%,#312323c4 30%),url(images/bgban3.jpeg);
+    background-position:center;
+    background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     height: 40vh;
-    width:98vw;
+    width:80vw;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
     gap: 30px;
+    margin-bottom: 100px;
   }
   .banner h1{
     font-size: 40px;
@@ -341,8 +347,8 @@
   .content button{
     font-size: 20px;
     text-decoration: none;
-    color: rgb(20, 19, 19);
-    border: 1px solid rgb(2, 2, 2);
+    color: rgb(233, 225, 225);
+    border: 1px solid rgb(240, 232, 232);
     border-radius: 10px;
     padding: 15px;
     margin-top: 40px;
@@ -358,18 +364,105 @@
     .content button{
         font-size: 14px;
     }
+    .banner{
+        width: 100vw;
+        margin-bottom: 30px;
+    }
+
   }
   
+
+
+  /* course-card */
+  .course-h1{
+    text-align: center;
+    margin: 40px;
+   
+  }
+  .carousel-container {
+    width: 100%; /* Adjust to your needs */
+    overflow: hidden; /* Hide overflow to create the carousel effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
   
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s linear; /* Smooth and continuous movement */
+  }
   
+  .c_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 250px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    background-color: #f1f1f1;
+  }
+  @media (max-width: 480px){
+    .c_card{
+        width: 200px;
+        height: 75px;
+        border-radius: 8px;
+        border: none;
+
+    }
+    .c_card h1{
+        font-size: 20px;
+    }
+  }
+
+
+
+
+
+
+  .testimonial_container{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
   
-  
-  
+  /* testimonial */
+  .testimonial_slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
 
+.testimonial_content {
+    display: flex;
+    /* We will handle animation with JavaScript */
+}
 
+.testimonial_card {
+    flex: 0 0 auto;
+    height: 300px;
+    width: 300px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
+.testimonial_img img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
 
+.testimonial-h1{
+    margin: 40px  auto;
+    text-align: center;
 
-
-
-
+}
