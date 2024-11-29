@@ -5,72 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future Talk Application Form</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
+
         .container {
             width: 100%;
             background-color: #fff;
             border-radius: 8px;
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+            overflow: hidden;
         }
+
         .header {
             padding: 10px;
             height: 20vh;
-            margin: 0px;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 2px solid #0a0a99;
-            
-           background: #0b0b31; ;
+            background: #0b0b31;
         }
-        form{
+
+        form {
             width: 90%;
             padding: 20px;
             margin: 20px auto;
+            flex: 1;
         }
+
         .header img {
             max-width: 170px;
         }
+
         .header h1 {
             text-align: center;
             font-size: 24px;
             color: #f6f6f8;
         }
-        .header p{
-            color: white;
+
+        .header p {
+            color: rgb(189, 184, 184);
             font-size: 12px;
             text-align: center;
         }
+
         .form-group {
+            display: flex;
+            align-items: center;
             margin: 20px 0;
         }
+
         label {
-           
-            font-weight: bold;
+            margin-right: 20px;
+            font-weight: 400;
+            font-size: 14px;
         }
-        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
-            display: flex;
+
+        textarea,input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
             flex: 1;
+            border: none;
+            border-bottom: 1px dotted #ccc;
             width: 100%;
-            padding: 8px; 
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 8px 0;
+            background: none;
+            outline: none;
         }
-        .radio{
+
+        .radio {
             display: flex;
         }
-        .radio label{
+
+        .radio label {
             margin-right: 10px;
         }
-        input[type="radio"]{
+
+        input[type="radio"] {
             margin: 2px;
         }
+
         button {
             background-color: #0a0a99;
             color: white;
@@ -79,42 +95,48 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         button:hover {
             background-color: #0a0a77;
         }
-        .button-class{
+
+        .button-class {
             width: 100%;
             display: flex;
             justify-content: center;
-           padding-bottom: 50px;
+            padding-bottom: 50px;
             align-items: center;
             text-align: center;
         }
-        @media (max-width: 480px) {
-            .header{
-                flex-direction: column;
-                height: 15vh;
-            }
-            #reg-num{
-                display: none;
-            }
-            .header img {
-                margin-top: 30px;
-            max-width: 200px;
-            }
-            .header h1{
-                display: none;
-                font-size: 22px;
-            }
-            input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
-           
-            width: 90%; 
-            padding: 10px 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        }
 
+        @media (max-width: 480px) {
+            .form-group {
+                margin: 15px 0;
+            }
+
+            label {
+                font-size: 12px;
+            }
+
+            .header {
+                flex-direction: column;
+                height: auto;
+                text-align: center;
+            }
+
+            .header img {
+                margin-top: 5px;
+                max-width: 150px;
+            }
+
+            textarea,input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"] {
+                margin-left: 10px;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -125,9 +147,9 @@
                 <h1>Future-Talk</h1>
                 <p>"Shape your future with expert guidance from Future Talk"</p>
             </div>
-           
             <p id="reg-num">No: <strong>002667</strong></p>
         </div>
+
         <form>
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -135,69 +157,95 @@
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+                <input type="email" id="email-input" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
                 <label for="mobile">Mobile Number:</label>
-                <input type="number" id="email" placeholder="Enter your email" required>
+                <input type="number" id="mobile" placeholder="Enter your mobile number" required>
             </div>
             <div class="form-group">
                 <label for="phone">Whatsapp Number:</label>
                 <input type="tel" id="whatsapp" placeholder="Enter your Whatsapp number" required>
             </div>
             <div class="form-group">
-                <label for="phone">Date of Birth:</label>
-                <input type="date" id="phone" placeholder="Date Of Birth " required>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" required>
             </div>
             <div class="form-group radio">
                 <label for="gender">Gender:</label>
                 <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Male</label><br>
+                <label for="male">Male</label>
                 <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label><br>
+                <label for="female">Female</label>
                 <input type="radio" id="other" name="gender" value="other">
                 <label for="other">Other</label>
             </div>
             <div class="form-group">
                 <label for="nationality">Nationality:</label>
-                <input type="Text" id="phone" placeholder=" Your Nation " required>
-            </div>
-             <div class="form-group">
-                <label for="adhaar">Adhaar:</label>
-                <input type="number" id="phone" placeholder=" Your Adhaar card number" required>
+                <input type="text" id="nationality" placeholder="Your Nation" required>
             </div>
             <div class="form-group">
-                <label for="adress">Adress:</label>
-                <input type="Text" id="phone" placeholder=" Your Adress " required>
+                <label for="aadhaar">Aadhaar:</label>
+                <input type="number" id="aadhaar" placeholder="Your Aadhaar number" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" placeholder="Your Address" rows="4" cols="50" required></textarea>
+                
             </div>
         </form>
+
         <div class="button-class">
-            <button onclick="downloadPDF()">Download as PDF</button>
+            <button onclick="captureForm()">Download as PDF</button>
         </div>
-        
     </div>
 
-    <!-- Include jsPDF and html2canvas libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <script>
-        async function downloadPDF() {
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF();
-            const formContainer = document.getElementById('formContainer');
+     
+     async function captureForm() {
+    try {
+        const { jsPDF } = window.jspdf;
+        const formContainer = document.getElementById('formContainer');
+        const button = document.querySelector('.button-class');
 
-            // Capture the form as an image
-            await html2canvas(formContainer).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const imgWidth = 190;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-            });
+        // Temporarily hide the button to avoid capturing it
+        button.style.display = 'none';
 
-            // Download the PDF
-            pdf.save('Future_Talk_Application_Form.pdf');
-        }
+        // Capture the form as an image
+        const canvas = await html2canvas(formContainer, {
+            scale: 2, // Higher resolution for clarity
+            useCORS: true,
+        });
+
+        // Restore the button visibility
+        button.style.display = 'block';
+
+        // Convert canvas to an image
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+
+        // Create a PDF document with custom dimensions matching the content
+        const pdf = new jsPDF({
+            orientation: imgWidth > imgHeight ? 'landscape' : 'portrait', // Match orientation
+            unit: 'px', // Pixel unit for better alignment
+            format: [imgWidth, imgHeight], // Set PDF size to match the content dimensions
+        });
+
+        // Add the image to the PDF with exact dimensions
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+        // Save the PDF
+        pdf.save('Future_Talk_Form.pdf');
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('An error occurred while generating the PDF.');
+    }
+}
+
     </script>
 </body>
 </html>
