@@ -441,6 +441,77 @@
 }
 
 
+/* top universities  */
+.topuniverities_container {
+    width: 100vw;
+    overflow: hidden; /* Prevent unwanted horizontal scroll */
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.topuniverities_container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.uni_card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 0px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.uni_card {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    
+}
+
+.uni_card img {
+    width: 120px;
+    height: auto;
+    margin: 30px ;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Responsive for Smaller Screens */
+@media (max-width: 768px) {
+    .uni_card {
+     margin: 5px;  
+    }
+}
+
+@media (max-width: 480px) {
+    .uni_card {
+        min-width: 40vw; 
+        margin: 2px;
+    }
+    .topuniverities_container h1{
+        font-size: 22px;
+    }
+
+    .uni_card img {
+        margin: 0px;
+        width: 100px;
+        height: 100px; /* Adjust image size for better display */
+    }
+}
+
+
+
+/* banner */
+
+
 .banner {
     overflow: hidden;
     background-color:#93abfe;
