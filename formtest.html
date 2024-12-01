@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with PDF Template</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <h1>Fill in Your Details</h1>
+  
+  <form id="userForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile Number:</label>
+      <input type="number" id="mobile" placeholder="Enter your mobile number" required>
+    </div>
+    <div class="form-group">
+      <label for="whatsapp">Whatsapp Number:</label>
+      <input type="tel" id="whatsapp" placeholder="Enter your Whatsapp number" required>
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" required>
+    </div>
+    <div class="form-group radio">
+      <label for="gender">Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" required> <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="other"> <label for="other">Other</label>
+    </div>
+    <div class="form-group">
+      <label for="nationality">Nationality:</label>
+      <input type="text" id="nationality" placeholder="Your Nation" required>
+    </div>
+    <div class="form-group">
+      <label for="aadhaar">Aadhaar:</label>
+      <input type="number" id="aadhaar" placeholder="Your Aadhaar number" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea id="address" placeholder="Your Address" rows="2" cols="50" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="intrest_course">Interested Course:</label>
+      <input type="text" id="intrest_course" placeholder="Interested Course" required>
+    </div>
+    <div class="form-group">
+      <label for="Guardian">Guardian Name:</label>
+      <input type="text" id="Guardian" placeholder="Guardian name" required>
+    </div>
+    <div class="form-group">
+      <label for="Guardian_number">Guardian Number:</label>
+      <input type="text" id="Guardian_number" placeholder="Guardian Number" required>
+    </div>
+    <div class="form-group">
+      <label for="blood">Blood Group:</label>
+      <input type="text" id="blood" placeholder="Blood Group" required>
+    </div>
+    <button type="button" onclick="generatePDF()">Download PDF</button>
+  </form>
+
+  <script>
+   async function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const img = new Image();
+  img.src = "images/FUTURE TALK.png"; // Ensure path is correct
+
+  img.onload = function () {
+    doc.addImage(img, "PNG", 0, 0, 210, 297); // Full A4 page
+
+    const name = document.getElementById("name").value || "N/A";
+    const email = document.getElementById("email").value || "N/A";
+    const mobile = document.getElementById("mobile").value || "N/A";
+    const whatsapp = document.getElementById("whatsapp").value || "N/A";
+    const dob = document.getElementById("dob").value || "N/A";
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || "N/A";
+    const nationality = document.getElementById("nationality").value || "N/A";
+    const aadhaar = document.getElementById("aadhaar").value || "N/A";
+    const address = document.getElementById("address").value || "N/A";
+    const course = document.getElementById("intrest_course").value || "N/A";
+    const guardian_name = document.getElementById("Guardian").value || "N/A";
+    const guardian_mobile = document.getElementById("Guardian_number").value || "N/A";
+    const blood = document.getElementById("blood").value || "N/A";
+
+    let yPosition = 45;
+    const lineHeight = 10;
+    const labelX = 20;
+    const inputX = 80;
+
+    doc.setFontSize(12);
+
+    // Function to handle multi-line text
+    function addText(label, value, yPos) {
+      const wrappedText = doc.splitTextToSize(value, 110);
+      doc.text(label, labelX, yPos);
+      doc.text(wrappedText, inputX, yPos);
+      return yPos + wrappedText.length * lineHeight;
+    }
+
+    yPosition = addText("Name:", name, yPosition);
+    yPosition = addText("Email:", email, yPosition);
+    yPosition = addText("Mobile:", mobile, yPosition);
+    yPosition = addText("Whatsapp:", whatsapp, yPosition);
+    yPosition = addText("Date of Birth:", dob, yPosition);
+    yPosition = addText("Gender:", gender, yPosition);
+    yPosition = addText("Nationality:", nationality, yPosition);
+    yPosition = addText("Aadhaar:", aadhaar, yPosition);
+    yPosition = addText("Address:", address, yPosition); // Handles multi-line address
+    yPosition = addText("Interested Course:", course, yPosition);
+    yPosition = addText("Guardian:", guardian_name, yPosition);
+    yPosition = addText("Guardian Mobile:", guardian_mobile, yPosition);
+    yPosition = addText("Blood Group:", blood, yPosition);
+
+    doc.save("UserDetails.pdf");
+  };
+
+  img.onerror = function () {
+    alert("Failed to load the template image. Please check the path.");
+  };
+}
+
+  </script>
+</body>
+</html>
