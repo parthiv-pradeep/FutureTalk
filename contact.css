@@ -1,0 +1,138 @@
+body .form-section{
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+
+  .contact-hero {
+    height: 30vh;
+    background-image: url('./images/contactushero.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+  }
+
+  .heading {
+    font-size: 4rem;
+    z-index: 1;
+    margin: 0;
+    color: white;
+    letter-spacing: 2px;
+  }
+
+  .container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .contact-form {
+    flex: 1;
+    padding: 20px 30px;
+    border-top: 5px solid #72d0ef;
+  }
+
+  .contact-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .form-group textarea {
+    resize: none;
+    height: 100px;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #72d0ef;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #72d0ef;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .submit-btn:hover {
+    background-color: #5bb9d7;
+  }
+
+  .note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
+  }
+
+  .image-container {
+    display: block;
+    flex: 1;
+    background: url('./images/call_centre_gut.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  /* Hiding image container on mobile */
+  @media (max-width: 768px) {
+    .image-container {
+      display: none;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+  }
