@@ -68,3 +68,34 @@ function moveTestimonialCarousel() {
 
 // Start the animation
 moveTestimonialCarousel();
+
+
+// slider for universities
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.uni_card_container');
+  const cards = document.querySelectorAll('.uni_card');
+  let scrollAmount = 0;
+  let cardWidth = cards[0].offsetWidth; // Dynamic card width
+
+  // Clone cards for seamless looping
+  cards.forEach(card => container.appendChild(card.cloneNode(true)));
+
+  function updateCardWidth() {
+      cardWidth = cards[0].offsetWidth;
+  }
+
+  function loopSlide() {
+      scrollAmount += 1;
+      if (scrollAmount >= cardWidth * cards.length) {
+          scrollAmount = 0; // Reset when loop completes
+      }
+      container.style.transform = `translateX(-${scrollAmount}px)`;
+      requestAnimationFrame(loopSlide);
+  }
+
+  // Update card width on resize for responsiveness
+  window.addEventListener('resize', updateCardWidth);
+
+  updateCardWidth();
+  loopSlide();
+});
