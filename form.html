@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
     <title>Future Talk Application Form</title>
     <style>
        body {
@@ -205,67 +204,93 @@
     </form>
   
     <script>
-     async function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-  
-    const img = new Image();
-    img.src = "images/FUTURE TALK.png"; // Ensure path is correct
-  
-    img.onload = function () {
-      doc.addImage(img, "PNG", 0, 0, 210, 297); // Full A4 page
-  
-      const name = document.getElementById("name").value || "N/A";
-      const email = document.getElementById("email").value || "N/A";
-      const mobile = document.getElementById("mobile").value || "N/A";
-      const whatsapp = document.getElementById("whatsapp").value || "N/A";
-      const dob = document.getElementById("dob").value || "N/A";
-      const gender = document.querySelector('input[name="gender"]:checked')?.value || "N/A";
-      const nationality = document.getElementById("nationality").value || "N/A";
-      const aadhaar = document.getElementById("aadhaar").value || "N/A";
-      const address = document.getElementById("address").value || "N/A";
-      const course = document.getElementById("intrest_course").value || "N/A";
-      const guardian_name = document.getElementById("Guardian").value || "N/A";
-      const guardian_mobile = document.getElementById("Guardian_number").value || "N/A";
-      const blood = document.getElementById("blood").value || "N/A";
-  
-      let yPosition = 45;
-      const lineHeight = 10;
-      const labelX = 20;
-      const inputX = 80;
-  
-      doc.setFontSize(12);
-  
-      // Function to handle multi-line text
-      function addText(label, value, yPos) {
-        const wrappedText = doc.splitTextToSize(value, 110);
-        doc.text(label, labelX, yPos);
-        doc.text(wrappedText, inputX, yPos);
-        return yPos + wrappedText.length * lineHeight;
-      }
-  
-      yPosition = addText("Name:", name, yPosition);
-      yPosition = addText("Email:", email, yPosition);
-      yPosition = addText("Mobile:", mobile, yPosition);
-      yPosition = addText("Whatsapp:", whatsapp, yPosition);
-      yPosition = addText("Date of Birth:", dob, yPosition);
-      yPosition = addText("Gender:", gender, yPosition);
-      yPosition = addText("Nationality:", nationality, yPosition);
-      yPosition = addText("Aadhaar:", aadhaar, yPosition);
-      yPosition = addText("Address:", address, yPosition); // Handles multi-line address
-      yPosition = addText("Interested Course:", course, yPosition);
-      yPosition = addText("Guardian:", guardian_name, yPosition);
-      yPosition = addText("Guardian Mobile:", guardian_mobile, yPosition);
-      yPosition = addText("Blood Group:", blood, yPosition);
-  
-      doc.save("UserDetails.pdf");
-    };
-  
-    img.onerror = function () {
-      alert("Failed to load the template image. Please check the path.");
-    };
+    async function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const img = new Image();
+  img.src = "images/FUTURE TALK.png"; // Ensure path is correct
+
+  img.onload = function () {
+    doc.addImage(img, "PNG", 0, 0, 210, 297); // Full A4 page
+
+    const name = document.getElementById("name").value || "N/A";
+    const email = document.getElementById("email").value || "N/A";
+    const mobile = document.getElementById("mobile").value || "N/A";
+    const whatsapp = document.getElementById("whatsapp").value || "N/A";
+    const dob = document.getElementById("dob").value || "N/A";
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || "N/A";
+    const nationality = document.getElementById("nationality").value || "N/A";
+    const aadhaar = document.getElementById("aadhaar").value || "N/A";
+    const address = document.getElementById("address").value || "N/A";
+    const course = document.getElementById("intrest_course").value || "N/A";
+    const guardian_name = document.getElementById("Guardian").value || "N/A";
+    const guardian_mobile = document.getElementById("Guardian_number").value || "N/A";
+    const blood = document.getElementById("blood").value || "N/A";
+
+    let yPosition = 50;
+    const lineHeight = 10;
+    const labelX = 25;
+    const boxStartX = 60;
+
+    doc.setFontSize(8); // Reduce font size for smaller boxes
+
+    // Function to draw boxes
+    function drawBoxes(value, maxBoxes, startX, startY) {
+  const boxSize = 4; // 4x4px boxes
+  let currentX = startX;
+
+  doc.setDrawColor(173, 216, 230); // Set box border color to blue
+
+  for (let i = 0; i < maxBoxes; i++) {
+    if (i < value.length) {
+      doc.text(value[i], currentX + 1, startY + 3); // Center text inside box
+    }
+    doc.rect(Math.round(currentX), Math.round(startY), boxSize, boxSize); // Use rounded positions
+    currentX += boxSize; // Move exactly to the next box
   }
-  
+}
+    // Function to add labels and boxes
+    function addTextWithBoxes(label, value, yPos, isDoubleLine = false, isTripleLine = false) {
+  doc.text(label, labelX, yPos + 3); // Add label
+  const maxBoxes = isTripleLine ? 84 : (isDoubleLine ? 56 : 28); // 84 boxes for triple line, 56 for double line, 28 for single line
+  const lines = isTripleLine ? 3 : (isDoubleLine ? 2 : 1); // Set lines to 3 for triple line, 2 for double line, and 1 for single line
+  const boxesPerLine = 28; // 28 boxes per line (fixed)
+  let currentY = yPos;
+
+  // Loop through each line based on the line type (single, double, or triple)
+  for (let line = 0; line < lines; line++) {
+    const lineValue = value.slice(line * boxesPerLine, (line + 1) * boxesPerLine);
+    drawBoxes(lineValue, boxesPerLine, boxStartX, currentY);
+    currentY += lineHeight; // Move down for the next line
+  }
+
+  return yPos + lines * lineHeight; // Adjust yPos for the next label
+}
+
+
+    // Add labels and their respective boxes
+    yPosition = addTextWithBoxes("Name:", name, yPosition);
+    yPosition = addTextWithBoxes("Email:", email, yPosition);
+    yPosition = addTextWithBoxes("Mobile:", mobile, yPosition);
+    yPosition = addTextWithBoxes("Whatsapp:", whatsapp, yPosition);
+    yPosition = addTextWithBoxes("Date of Birth:", dob, yPosition);
+    yPosition = addTextWithBoxes("Gender:", gender, yPosition);
+    yPosition = addTextWithBoxes("Nationality:", nationality, yPosition);
+    yPosition = addTextWithBoxes("Aadhaar:", aadhaar, yPosition);
+    yPosition = addTextWithBoxes("Address:", address, yPosition, false, true); // Triple line for Address
+    yPosition = addTextWithBoxes("Interested Course:", course, yPosition);
+    yPosition = addTextWithBoxes("Guardian:", guardian_name, yPosition);
+    yPosition = addTextWithBoxes("Guardian Mobile:", guardian_mobile, yPosition);
+    yPosition = addTextWithBoxes("Blood Group:", blood, yPosition);
+
+    doc.save("Student_details.pdf");
+  };
+
+  img.onerror = function () {
+    alert("Failed to load the template image. Please check the path.");
+  };
+}
     </script>
   </body>
   </html>
