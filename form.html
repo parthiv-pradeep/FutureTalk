@@ -228,46 +228,47 @@
     const guardian_mobile = document.getElementById("Guardian_number").value || "N/A";
     const blood = document.getElementById("blood").value || "N/A";
 
-    let yPosition = 50;
-    const lineHeight = 10;
+    let yPosition = 60;
+    const lineHeight = 12;
     const labelX = 25;
-    const boxStartX = 60;
+    const boxStartX = 65;
 
-    doc.setFontSize(8); // Reduce font size for smaller boxes
+    doc.setFontSize(10); // Font size for input values
 
     // Function to draw boxes
     function drawBoxes(value, maxBoxes, startX, startY) {
-  const boxSize = 4; // 4x4px boxes
-  let currentX = startX;
+      const boxSize = 4;
+      let currentX = startX;
+      doc.setDrawColor(173, 216, 230); // Box color
 
-  doc.setDrawColor(173, 216, 230); // Set box border color to blue
-
-  for (let i = 0; i < maxBoxes; i++) {
-    if (i < value.length) {
-      doc.text(value[i], currentX + 1, startY + 3); // Center text inside box
+      for (let i = 0; i < maxBoxes; i++) {
+        if (i < value.length) {
+          doc.text(value[i], currentX + 1, startY + 3);
+        }
+        doc.rect(Math.round(currentX), Math.round(startY), boxSize, boxSize);
+        currentX += boxSize;
+      }
     }
-    doc.rect(Math.round(currentX), Math.round(startY), boxSize, boxSize); // Use rounded positions
-    currentX += boxSize; // Move exactly to the next box
-  }
-}
+
     // Function to add labels and boxes
     function addTextWithBoxes(label, value, yPos, isDoubleLine = false, isTripleLine = false) {
-  doc.text(label, labelX, yPos + 3); // Add label
-  const maxBoxes = isTripleLine ? 84 : (isDoubleLine ? 56 : 28); // 84 boxes for triple line, 56 for double line, 28 for single line
-  const lines = isTripleLine ? 3 : (isDoubleLine ? 2 : 1); // Set lines to 3 for triple line, 2 for double line, and 1 for single line
-  const boxesPerLine = 28; // 28 boxes per line (fixed)
-  let currentY = yPos;
+      doc.setFontSize(11); // Font size for labels
+      doc.text(label, labelX, yPos + 3); // Add label
+      doc.setFontSize(8); // Reset to smaller size for input values
 
-  // Loop through each line based on the line type (single, double, or triple)
-  for (let line = 0; line < lines; line++) {
-    const lineValue = value.slice(line * boxesPerLine, (line + 1) * boxesPerLine);
-    drawBoxes(lineValue, boxesPerLine, boxStartX, currentY);
-    currentY += lineHeight; // Move down for the next line
-  }
+      const maxBoxes = isTripleLine ? 84 : isDoubleLine ? 56 : 28;
+      const lines = isTripleLine ? 3 : isDoubleLine ? 2 : 1;
+      const boxesPerLine = 28;
+      let currentY = yPos;
 
-  return yPos + lines * lineHeight; // Adjust yPos for the next label
-}
+      for (let line = 0; line < lines; line++) {
+        const lineValue = value.slice(line * boxesPerLine, (line + 1) * boxesPerLine);
+        drawBoxes(lineValue, boxesPerLine, boxStartX, currentY);
+        currentY += lineHeight;
+      }
 
+      return yPos + lines * lineHeight;
+    }
 
     // Add labels and their respective boxes
     yPosition = addTextWithBoxes("Name:", name, yPosition);
