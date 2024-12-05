@@ -41,6 +41,16 @@ body .form-section{
     letter-spacing: 2px;
   }
 
+  .page-heading{
+    font-size: 4.6em;
+  }
+
+  @media (max-width:460px) {
+   .page-heading{
+    font-size: 2.5rem;
+   }
+  }
+
   .container {
     display: flex;
     width: 90%;
