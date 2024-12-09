@@ -211,11 +211,11 @@ header{
 }
 
 .about-our-services p{
-    width: 95%;
+    width: 80%;
 }
 
 .about-our-services{
-    height: 80vh;
+    height: 70vh;
 }
 
 
@@ -287,6 +287,12 @@ hr{
 }
 
 @media (max-width: 480px) {
+    .about-our-services p{
+        width: 95%;
+    }
+    .about-our-services{
+        height: 80vh;
+    }
     .nav_container{
         display: flex;
         flex-direction: column;
