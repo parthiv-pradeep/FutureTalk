@@ -1,6 +1,7 @@
-body{
+body {
     caret-color: transparent;
     -webkit-tap-highlight-color: transparent;
+   
 }
 
 *{
@@ -456,7 +457,7 @@ header{
 
 /* top universities  */
 .topuniverities_container {
-    width: 100vw;
+    width: 98vw;
     overflow: hidden; /* Prevent unwanted horizontal scroll */
     box-sizing: border-box;
     padding: 0 10px;
@@ -586,12 +587,13 @@ header{
    
   }
   .carousel-container {
-    width: 100%; /* Adjust to your needs */
+    width: 98vw; /* Adjust to your needs */
     overflow: hidden; /* Hide overflow to create the carousel effect */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 0px auto;
   }
   
   .carousel-wrapper {
