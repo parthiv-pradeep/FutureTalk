@@ -97,6 +97,10 @@ header{
     margin-right: 30px;
     color:#ffffff;
 }
+.course_btn a{
+    text-decoration: none;
+    color: #ffffff;
+}
 
 .home_content {
     overflow: hidden;
@@ -749,7 +753,7 @@ header{
 
 .testimonial_card {
     flex: 0 0 auto;
-    height: 300px;
+    height: 250px;
     width: 300px;
     background-color: #8f8fc2;
     border-radius: 8px;
@@ -778,7 +782,7 @@ header{
         width: 100vw;;
     }
     .testimonial_card{
-        height: 350px;
+        height: 200px;
         width: 250px;
     }
     .testimonial_text p{
