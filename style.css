@@ -755,7 +755,7 @@ header{
 
 .testimonial_card {
     flex: 0 0 auto;
-    height: 250px;
+    height: 270px;
     width: 300px;
     background-color: #8f8fc2;
     border-radius: 8px;
@@ -784,7 +784,7 @@ header{
         width: 100vw;;
     }
     .testimonial_card{
-        height: 200px;
+        height: 250px;
         width: 250px;
     }
     .testimonial_text p{
