@@ -566,7 +566,9 @@ hr{
     }
    
     .footer_contact{
-        display: none
+        /* display: none */
+        margin-top: 10px;
+        text-align: center;
     }
     .footer p{
         font-size: 12px;

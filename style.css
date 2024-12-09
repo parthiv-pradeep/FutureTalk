@@ -697,14 +697,14 @@ header{
     border: none;
     border-radius: 8px;
     margin: 10px;
-    background-color: #0b0b31;
+    background-color: #f3ecf0;
   }
   .c_card h1{
     padding: 0px 15px;
     text-align: center;
     font-size: 18px;
     font-weight: 400;
-    color:#72d0ef;
+    color:#000000;
     
   }
   @media (max-width: 480px){
@@ -757,14 +757,14 @@ header{
     flex: 0 0 auto;
     height: 270px;
     width: 300px;
-    background-color: #8f8fc2;
+    background-color: #27272a;
     border-radius: 8px;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
 }
 
 .testimonial_img img {
@@ -877,7 +877,7 @@ header{
     text-align: center;
     margin: 10px;
 }
-@media (max-width: 480px){
+@media (max-width: 580px){
     .footer{
         display: flex;
         flex-direction: column;
@@ -907,7 +907,9 @@ header{
     }
    
     .footer_contact{
-        display: none
+        /* display: none */
+        text-align: center;
+        margin-top: 10px;
     }
     .footer p{
         font-size: 12px;
@@ -932,7 +934,8 @@ header{
         font-size: 12px;
     }
     .footer_contact h3{
-        font-weight: 400;
+        text-align: center;
+        font-weight: 500;
     }
     .footer_contact p{
         font-size: 12px;
