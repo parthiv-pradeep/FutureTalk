@@ -196,7 +196,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
+    margin-bottom: 10px;
 }
 
 
@@ -204,58 +204,47 @@ header{
 .about-our-services .service-img img{
     width: 25rem;
     border-radius: 8px;
-    /* box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.562);
-    transition: 0.15s;
-    /* animation-name: floater;
-    animation-delay: 0ms;
-    animation-duration: 2s; */
-    /* animation: floater 12s ease-in-out infinite alternate both;  */
-}
-
-@keyframes floater {
-    25%{
-        transform: translateX(5px);
-    }
-    50%{
-        transform: translateY(5px);
-    }
-    75%{
-        transform: translateX(-5px);
-    }
-    100%{
-        transform: translateY(5px);
-    }
 }
 
 .about-our-services h1{
-    margin: 15px;
+    margin: 0 15px;
 }
 
 .about-our-services p{
     width: 80%;
 }
 
+.about-our-services{
+    height: 65vh;
+}
+
 
 .about-our-services .service-description{
-    margin: 3rem;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 20px;
+}
+
+hr{
+    display: none;
 }
 
 @media (max-width:1000px) {
+    hr{
+        display: flex;
+        width: 90%;
+    margin: 40px auto;
+    border: 1px solid hsla(180, 21%, 93%, 0.945);
+    }
+
     .about-our-services{
         flex-direction: column;
     }
     .about-our-services .service-img img{
         width: 15rem;
         border-radius: 8px;
-    }
-
-    .about-our-services .service-description{
-        padding: 0;
     }
 
     .about-our-services{
@@ -269,6 +258,7 @@ header{
     
     .about-our-services p{
         font-size: 12px;
+        text-align: justify;
     }
     
 }
