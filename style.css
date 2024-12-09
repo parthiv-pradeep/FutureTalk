@@ -180,6 +180,93 @@ header{
     gap: 20px;
 }
 
+.about-our-services{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+}
+
+.about-our-services .service-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
+
+
+.about-our-services .service-img img{
+    width: 25rem;
+    border-radius: 8px;
+    /* box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.562);
+    transition: 0.15s;
+    /* animation-name: floater;
+    animation-delay: 0ms;
+    animation-duration: 2s; */
+    /* animation: floater 12s ease-in-out infinite alternate both;  */
+}
+
+@keyframes floater {
+    25%{
+        transform: translateX(5px);
+    }
+    50%{
+        transform: translateY(5px);
+    }
+    75%{
+        transform: translateX(-5px);
+    }
+    100%{
+        transform: translateY(5px);
+    }
+}
+
+.about-our-services h1{
+    margin: 15px;
+}
+
+.about-our-services p{
+    width: 80%;
+}
+
+
+.about-our-services .service-description{
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+@media (max-width:1000px) {
+    .about-our-services{
+        flex-direction: column;
+    }
+    .about-our-services .service-img img{
+        width: 15rem;
+        border-radius: 8px;
+    }
+
+    .about-our-services .service-description{
+        padding: 0;
+    }
+
+    .about-our-services{
+        padding: 2rem;
+    }
+
+    .service-description h1{
+        margin: 10px;
+        font-size: 18px;
+    }
+    
+    .about-our-services p{
+        font-size: 12px;
+    }
+    
+}
 
     
 /* responsive */
