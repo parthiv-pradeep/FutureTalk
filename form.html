@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 2%;
         }
 
         .container {
@@ -57,6 +57,7 @@
             display: flex;
             align-items: center;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         label {
@@ -116,6 +117,13 @@
           align-items: center;
         }
 
+         .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+
         @media (max-width: 480px) {
             .form-group {
                 margin: 15px 0;
@@ -148,7 +156,7 @@
 </head>
 <body>
     <div class="title">
-        <h1>Aplication Form</h1>
+        <h1>Application Form</h1>
     </div>
     
     
@@ -156,64 +164,217 @@
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Enter your name" required>
+          <div class="error" id="nameError"></div>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" placeholder="Enter your email" required>
+        <div class="error" id="emailError"></div>
       </div>
       <div class="form-group">
         <label for="mobile">Mobile Number:</label>
         <input type="number" id="mobile" placeholder="Enter your mobile number" required>
+          <div class="error" id="mobileError"></div>
       </div>
       <div class="form-group">
         <label for="whatsapp">Whatsapp Number:</label>
         <input type="tel" id="whatsapp" placeholder="Enter your Whatsapp number" required>
+          <div class="error" id="whatsappError"></div>
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth:</label>
         <input type="date" id="dob" required>
+          <div class="error" id="dobError"></div>
       </div>
       <div class="form-group radio">
         <label for="gender">Gender:</label>
         <input type="radio" id="male" name="gender" value="male" required> <label for="male">Male</label>
         <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label>
         <input type="radio" id="other" name="gender" value="other"> <label for="other">Other</label>
+         <div class="error" id="genderError"></div>
       </div>
       <div class="form-group">
         <label for="nationality">Nationality:</label>
         <input type="text" id="nationality" placeholder="Your Nation" required>
+         <div class="error" id="nationalityError"></div>
       </div>
       <div class="form-group">
         <label for="aadhaar">Aadhaar:</label>
         <input type="number" id="aadhaar" placeholder="Your Aadhaar number" required>
+          <div class="error" id="aadhaarError"></div>
       </div>
       <div class="form-group">
         <label for="address">Address:</label>
         <textarea id="address" placeholder="Your Address" rows="2" cols="50" required></textarea>
+          <div class="error" id="addressError"></div>
       </div>
       <div class="form-group">
         <label for="intrest_course">Interested Course:</label>
         <input type="text" id="intrest_course" placeholder="Interested Course" required>
+        <div class="error" id="intrestCourseError"></div>
       </div>
       <div class="form-group">
         <label for="Guardian">Guardian Name:</label>
         <input type="text" id="Guardian" placeholder="Guardian name" required>
+          <div class="error" id="guardianNameError"></div>
       </div>
       <div class="form-group">
         <label for="Guardian_number">Guardian Number:</label>
         <input type="text" id="Guardian_number" placeholder="Guardian Number" required>
+          <div class="error" id="guardianNumberError"></div>
       </div>
       <div class="form-group">
         <label for="blood">Blood Group:</label>
         <input type="text" id="blood" placeholder="Blood Group" required>
+          <div class="error" id="bloodError"></div>
       </div>
       <div class="dn_btn">
-        <button type="button" onclick="generatePDF()">Download PDF</button>
+        <button type="button" onclick="validateAndGeneratePDF()">Download PDF</button>
       </div>
-      
+        <div id="successMessage" style="text-align: center; color: green; margin-top: 10px; display: none;">
+            PDF Generated Successfully!
+        </div>
     </form>
   
     <script>
+
+        function validateForm() {
+          let isValid = true;
+          // Reset error messages
+            const errorElements = document.querySelectorAll('.error');
+             errorElements.forEach(element => element.textContent = '');
+
+
+          // Name validation
+          const nameInput = document.getElementById('name');
+          if (!nameInput.value.trim()) {
+            document.getElementById('nameError').textContent = 'Please enter your name.';
+              isValid = false;
+          } else {
+               const nameRegex = /^[A-Za-z\s]+$/;
+              if (!nameRegex.test(nameInput.value)) {
+                  document.getElementById('nameError').textContent = 'Name should only contain letters.';
+                  isValid = false;
+            }
+          }
+
+           // Email validation
+            const emailInput = document.getElementById('email');
+            if (!emailInput.value.trim()) {
+                document.getElementById('emailError').textContent = 'Please enter your email address.';
+                isValid = false;
+            } else {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                    isValid = false;
+                }
+            }
+
+
+          // Mobile number validation
+            const mobileInput = document.getElementById('mobile');
+            if (!mobileInput.value.trim()) {
+                document.getElementById('mobileError').textContent = 'Please enter your mobile number.';
+              isValid = false;
+             } else if (isNaN(mobileInput.value) || mobileInput.value.length < 10) {
+                document.getElementById('mobileError').textContent = 'Please enter a valid 10 digit mobile number.';
+                isValid = false;
+             }
+
+
+
+          // WhatsApp number validation
+            const whatsappInput = document.getElementById('whatsapp');
+             if (!whatsappInput.value.trim()) {
+                 document.getElementById('whatsappError').textContent = 'Please enter your WhatsApp number.';
+                 isValid = false;
+              } else if (isNaN(whatsappInput.value)) {
+                document.getElementById('whatsappError').textContent = 'Please enter a valid WhatsApp number.';
+                isValid = false;
+              }
+
+          // Date of birth validation
+          const dobInput = document.getElementById('dob');
+            if (!dobInput.value.trim()) {
+               document.getElementById('dobError').textContent = 'Please select your date of birth.';
+                isValid = false;
+          }
+
+            // Gender validation
+            const genderRadios = document.querySelectorAll('input[name="gender"]');
+            let genderSelected = false;
+            genderRadios.forEach(radio => {
+                if (radio.checked) {
+                    genderSelected = true;
+                }
+            });
+            if (!genderSelected) {
+                document.getElementById('genderError').textContent = 'Please select your gender.';
+                isValid = false;
+            }
+
+
+            // Nationality validation
+            const nationalityInput = document.getElementById('nationality');
+            if (!nationalityInput.value.trim()) {
+                document.getElementById('nationalityError').textContent = 'Please enter your nationality.';
+                isValid = false;
+            }
+
+
+          // Aadhaar validation
+            const aadhaarInput = document.getElementById('aadhaar');
+            if (!aadhaarInput.value.trim()) {
+                document.getElementById('aadhaarError').textContent = 'Please enter your Aadhaar number.';
+               isValid = false;
+            }  else if (isNaN(aadhaarInput.value) || aadhaarInput.value.length < 12) {
+                document.getElementById('aadhaarError').textContent = 'Please enter a valid 12 digit Aadhaar number.';
+                isValid = false;
+             }
+
+
+          // Address validation
+          const addressInput = document.getElementById('address');
+            if (!addressInput.value.trim()) {
+                document.getElementById('addressError').textContent = 'Please enter your address.';
+                isValid = false;
+            }
+
+          // Interested course validation
+          const intrestCourseInput = document.getElementById('intrest_course');
+          if (!intrestCourseInput.value.trim()) {
+            document.getElementById('intrestCourseError').textContent = 'Please enter your interested course.';
+            isValid = false;
+          }
+
+          // Guardian name validation
+          const guardianNameInput = document.getElementById('Guardian');
+          if (!guardianNameInput.value.trim()) {
+            document.getElementById('guardianNameError').textContent = 'Please enter your guardian name.';
+            isValid = false;
+          }
+
+          // Guardian number validation
+          const guardianNumberInput = document.getElementById('Guardian_number');
+            if (!guardianNumberInput.value.trim()) {
+              document.getElementById('guardianNumberError').textContent = 'Please enter your guardian number.';
+              isValid = false;
+             } else if (isNaN(guardianNumberInput.value)) {
+                document.getElementById('guardianNumberError').textContent = 'Please enter a valid guardian number.';
+                isValid = false;
+            }
+
+            // Blood Group validation
+            const bloodInput = document.getElementById('blood');
+            if (!bloodInput.value.trim()) {
+               document.getElementById('bloodError').textContent = 'Please enter your blood group.';
+                isValid = false;
+            }
+
+
+          return isValid;
+        }
     async function generatePDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -296,12 +457,20 @@
     yPosition = addTextWithBoxes("Blood Group:", blood, yPosition);
 
     doc.save("Student_details.pdf");
+         document.getElementById('successMessage').style.display = 'block'; // show success message
+
   };
 
   img.onerror = function () {
     alert("Failed to load the template image. Please check the path.");
   };
 }
+
+        function validateAndGeneratePDF() {
+            if (validateForm()) {
+                generatePDF();
+            }
+        }
     </script>
   </body>
   </html>
